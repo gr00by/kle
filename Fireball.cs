@@ -41,15 +41,15 @@ public class Fireball : MonoBehaviour
 			//Obliczenie kierunku w ktorym ma leciec fojerbol, jesli sie nie poruszamy (na podstawie zmiennej direction ze skryptu Controller.cs)
 			else if(rootrigid.velocity.x == 0 && rootrigid.velocity.y == 0)
 			{
-				to_x = transform.position.x + 3 * Mathf.Sin (playerCtrl.direction * Mathf.PI/180);
-				to_y = transform.position.y + 3 * Mathf.Cos (playerCtrl.direction * Mathf.PI/180);
+				to_x = transform.position.x + Sign(Mathf.Sin (playerCtrl.direction * Mathf.PI/180));
+				to_y = transform.position.y + Sign(Mathf.Cos (playerCtrl.direction * Mathf.PI/180));
 			}
 			//Obliczamy offset, zeby fojerbol nie pojawial sie na mordzie goscia
 			float off_x = Sign(rootrigid.velocity.x) * projectDist;
 			float off_y = Sign(rootrigid.velocity.y) * projectDist;
 			if(rootrigid.velocity.x == 0 && rootrigid.velocity.y == 0){
-				off_x = Sign(3* Mathf.Sin (playerCtrl.direction * Mathf.PI/180)) * projectDist;
-				off_y = Sign(3* Mathf.Cos (playerCtrl.direction * Mathf.PI/180)) * projectDist;
+				off_x = Sign(Mathf.Sin (playerCtrl.direction * Mathf.PI/180)) * projectDist;
+				off_y = Sign(Mathf.Cos (playerCtrl.direction * Mathf.PI/180)) * projectDist;
 			}
 			//Obliczamy kat miedzy punktem poczatkowym a koncowym
 			float angle = Mathf.Atan ((to_y - from_y)/(to_x - from_x));
